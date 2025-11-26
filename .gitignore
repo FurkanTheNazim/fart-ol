@@ -1,0 +1,15 @@
+# Object files
+*.o
+*.a
+
+# Binaries
+fractol
+a.out
+
+# Libraries (if cloned)
+minilibx-linux/
+
+# Documentation
+subject.md
+norm.md
+.DS_Store
