@@ -19,7 +19,7 @@ SRCS_DIR	= srcs
 OBJS_DIR	= objs
 
 # Source files will be added here
-SRC_FILES	= main.c
+SRC_FILES	= main.c math_utils.c utils.c init.c events.c render.c
 
 SRCS		= $(addprefix $(SRCS_DIR)/, $(SRC_FILES))
 OBJS		= $(addprefix $(OBJS_DIR)/, $(SRC_FILES:.c=.o))

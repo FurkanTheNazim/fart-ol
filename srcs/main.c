@@ -1,20 +1,28 @@
-#include "mlx.h"
-#include <stdlib.h>
+#include "fractol.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*win;
+	t_fractal	fractal;
 
-	mlx = mlx_init();
-	if (!mlx)
-		return (1);
-	win = mlx_new_window(mlx, 800, 600, "Fract-ol");
-	if (!win)
+	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
+		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
-		free(mlx);
-		return (1);
+		fractal.name = argv[1];
+		if (!ft_strncmp(fractal.name, "julia", 5))
+		{
+			fractal.julia_x = atodbl(argv[2]);
+			fractal.julia_y = atodbl(argv[3]);
+		}
+		fractal_init(&fractal);
+		fractal_render(&fractal);
+		mlx_loop(fractal.mlx_connection);
 	}
-	mlx_loop(mlx);
+	else
+	{
+		ft_printf("Available fractals:\n");
+		ft_printf("\t./fractol mandelbrot\n");
+		ft_printf("\t./fractol julia <real> <i>\n");
+		exit(EXIT_FAILURE);
+	}
 	return (0);
 }
