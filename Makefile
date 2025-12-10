@@ -57,7 +57,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	@if [ -d "$(PRINTF_DIR)" ]; then make fclean -C $(PRINTF_DIR); fi
-	# MLX doesn't usually have fclean, but we can try or just clean
+	rm -rf $(MLX_DIR)
 	
 re: fclean all
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   events.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mahmmous <mahmmous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/10 07:41:46 by mahmmous          #+#    #+#             */
+/*   Updated: 2025/12/10 07:46:25 by mahmmous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	close_handler(t_fractal *fractal)
@@ -12,7 +24,7 @@ int	close_handler(t_fractal *fractal)
 
 int	key_handler(int keysym, t_fractal *fractal)
 {
-	if (keysym == 65307) // ESC key
+	if (keysym == 65307)
 		close_handler(fractal);
 	return (0);
 }
@@ -21,14 +33,10 @@ int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
 	(void)x;
 	(void)y;
-	if (button == 4) // Scroll UP -> Zoom IN
-	{
+	if (button == 4)
 		fractal->zoom *= 0.95;
-	}
-	else if (button == 5) // Scroll DOWN -> Zoom OUT
-	{
+	else if (button == 5)
 		fractal->zoom *= 1.05;
-	}
 	fractal_render(fractal);
 	return (0);
 }
