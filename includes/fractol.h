@@ -6,7 +6,7 @@
 /*   By: mahmmous <mahmmous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 07:42:19 by mahmmous          #+#    #+#             */
-/*   Updated: 2025/12/10 07:45:34 by mahmmous         ###   ########.fr       */
+/*   Updated: 2025/12/10 08:12:59 by mahmmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_map
 {
 	double	new_min;
 	double	new_max;
+	double	old_min;
 	double	old_max;
 }	t_map;
 
@@ -62,7 +63,7 @@ typedef struct s_fractal
 
 void		fractal_init(t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);
-double		map(double unscaled_num, t_map m);
+double		map(double num, t_map m);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 int			key_handler(int keysym, t_fractal *fractal);

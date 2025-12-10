@@ -6,7 +6,7 @@
 /*   By: mahmmous <mahmmous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 07:41:56 by mahmmous          #+#    #+#             */
-/*   Updated: 2025/12/10 07:46:10 by mahmmous         ###   ########.fr       */
+/*   Updated: 2025/12/10 08:13:34 by mahmmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,17 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	int			color;
 
 	i = 0;
-	z.x = (map(x, (t_map){-2, +2, WIDTH}) * fractal->zoom) + fractal->shift_x;
-	z.y = (map(y, (t_map){+2, -2, HEIGHT}) * fractal->zoom) + fractal->shift_y;
+	z.x = (map(x, (t_map){-2, 2, 0, WIDTH})
+			* fractal->zoom) + fractal->shift_x;
+	z.y = (map(y, (t_map){2, -2, 0, HEIGHT})
+			* fractal->zoom) + fractal->shift_y;
 	set_complex_coords(&z, &c, fractal);
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = map(i, (t_map){0x000000, 0xFFFFFF,
+			color = map(i, (t_map){0x000000, 0xFFFFFF, 0,
 					fractal->iterations_definition});
 			my_mlx_pixel_put(&fractal->img, x, y, color);
 			return ;
